@@ -17,7 +17,7 @@ def get_random_doi():
         # Parse the JSON response
         data = dict(response.json())
 
-        if data['doi'] != None and data['language'] == 'en':
+        if data['doi'] != None:
             return data['doi']
         else:
             continue
@@ -30,7 +30,7 @@ def get_bibtex(doi):
 
 def get_random_style(doi):
 
-    styles = ['apa', 'harvard3', 'elsevier-harvard', 'mla', 'ecoscience']
+    styles = ['apa', 'harvard3', 'elsevier-harvard', 'mla', 'ecoscience', 'chicago-author-date','ieee', 'council-of-science-editors']
     random_style = random.choice(styles)
     styled_citation = cn.content_negotiation(ids = doi, format = 'text', style=random_style)
     return styled_citation, random_style
